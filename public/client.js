@@ -1,13 +1,16 @@
 const socket = io()
 let username;
 let textarea = document.querySelector('#textarea')
+const messageForm = document.getElementById("message_form")
 let messageArea = document.querySelector('.message__area')
 username = prompt('Please enter your name: ')
+
+// setting initial focus to text area
+textarea.focus();
 
 if (!username) {
   fetch("https://randomuser.me/api/?nat=us&randomapi").then((res) => res.json()).then(data => {
     username = data.results[0].login.username;
-    console.log(data)
   }).catch((err) => {
     console.log(err);
     username = "randomuser";
@@ -17,11 +20,12 @@ if (!username) {
   })
 }
 
-textarea.addEventListener('keyup', (e) => {
-  if (e.key === 'Enter') {
-    sendMessage(e.target.value)
+messageForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (textarea.value) {
+    sendMessage(textarea.value);
   }
-})
+});
 
 function sendMessage(message) {
   let msg = {

@@ -39,13 +39,40 @@ section.chat__section {
     overflow-y: auto;
     padding-top: 40px;
 }
-textarea {
+form{
+  display:flex;
+  gap:0.5rem;
+  padding:1rem;
+}
+form button{
+  height: fit-content;
+  padding: 1rem 2rem;
+  border:none;
+  outline: 2px solid #8F8BE8;
+  color: #000;
+  border-radius:6px;
+  cursor:pointer;
+  transition: background 0.2s ease-in-out;
+  background-color:#fff;
+}
+form button:focus{
+  color: #fff;
+  background-color: #8F8BE8;
+}
+input {
     width: 100%;
     border: none;
     padding: 20px;
     font-size: 16px;
-    outline: none;
     background: #FBFBFB;
+    border-radius:6px;
+    transition: box-shadow 0.2s ease-in-out;
+}
+input:hover{
+  box-shadow:1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+form button:focus, input:focus{
+  outline: 2px solid #8F8BE8;
 }
 
 .message {
@@ -110,4 +137,9 @@ textarea {
     top: -20px;
     color: #333;
     font-size: 14px;
+}
+.message p{
+  width: 100%;
+  overflow-x: hidden;
+  word-wrap:break-word;
 }
